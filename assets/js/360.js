@@ -1,4 +1,4 @@
-import * as THREE from './assets/js/three.module.min.js';
+import * as THREE from './three.module.min.js';
 
 let camera, scene, renderer;
 
@@ -9,7 +9,6 @@ let isUserInteracting = false,
     phi = 0, theta = 0;
 
 const binaryClock = document.getElementById('onProgressContainer');
-const conatainer = document.getElementById('container');
 
 init();
 animate();
@@ -66,18 +65,6 @@ function init() {
     
     } );
 
-
-
-
-
-
-
-
-    // const material = new THREE.MeshBasicMaterial({ map: texture });
-
-    // const mesh = new THREE.Mesh(geometry, material);
-
-    // scene.add(mesh);
 
     renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio(window.devicePixelRatio);
