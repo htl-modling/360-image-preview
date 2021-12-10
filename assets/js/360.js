@@ -1,4 +1,4 @@
-import * as THREE from '/assets/js/three.module.min.js';
+import * as THREE from './assets/js/three.module.min.js';
 
 let camera, scene, renderer;
 
@@ -56,7 +56,7 @@ function init() {
     };
     
     const loader = new THREE.TextureLoader( manager );
-    loader.load( '/assets/images/panoramaMain.PNG', function ( texture ) {
+    loader.load( './assets/images/panoramaMain.PNG', function ( texture ) {
 
         const material = new THREE.MeshBasicMaterial({ map: texture });
 
