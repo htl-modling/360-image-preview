@@ -8,6 +8,9 @@ let isUserInteracting = false,
     lat = -20, onPointerDownLat = 0,
     phi = 0, theta = 0;
 
+const binaryClock = document.getElementById('onProgressContainer');
+const conatainer = document.getElementById('container');
+
 init();
 animate();
 
@@ -24,37 +27,6 @@ function init() {
     // invert the geometry on the x-axis so that all of the faces point inward
     geometry.scale(- 1, 1, 1);
 
-    // const loader = new THREE.TextureLoader();
-
-    // loader.load(
-    //     '/assets/images/panoramaMain.PNG',
-
-    //     function ( texture ) {
-    //         // in this example we create the material when the texture is loaded
-    //         const material = new THREE.MeshBasicMaterial({ map: texture });
-
-    //         const mesh = new THREE.Mesh(geometry, material);
-
-    //         scene.add(mesh);
-    //     },
-
-    //     function ( onProgress ) {
-
-    //         console.log('Object is loading...' + onProgress.total);
-    //         console.log( (onProgress.loaded / onProgress.total * 100) + '% loaded' );
-    
-    //     },
-    //     // called when loading has errors
-    //     function ( error ) {
-    
-    //         console.log( 'An error happened: ' + error );
-    
-    //     });
-
-    // const texture = new THREE.TextureLoader().load('/assets/images/panoramaMain.PNG');
-
-
-
     const manager = new THREE.LoadingManager();
     manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
     
@@ -65,6 +37,8 @@ function init() {
     manager.onLoad = function () {
     
         console.log( 'Loading complete!');
+        binaryClock.classList.add('hide');
+        container.classList.remove('hide');
     
     };
     
