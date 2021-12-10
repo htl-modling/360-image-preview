@@ -18,6 +18,7 @@ function init() {
     camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 1100);
 
     scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x152024);
 
     const geometry = new THREE.SphereGeometry(500, 60, 40);
     // invert the geometry on the x-axis so that all of the faces point inward
