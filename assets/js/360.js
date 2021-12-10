@@ -31,17 +31,15 @@ function init() {
     manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
     
         console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-        binaryClock.classList.add('show');
     
     };
     
     manager.onLoad = function () {
     
         console.log( 'Loading complete!');
-        binaryClock.classList.add('hide');
-        binaryClock.classList.remove('show');
+        // binaryClock.classList.add('hide');
         
-        container.classList.remove('hide');
+        // container.classList.remove('hide');
     
     };
     
@@ -49,7 +47,6 @@ function init() {
     manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
     
         console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-        binaryClock.classList.add('show');
     
     };
     
