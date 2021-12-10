@@ -29,7 +29,6 @@ function init() {
 
     const manager = new THREE.LoadingManager();
     manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
-        scene.clear();
     
         console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
     
@@ -38,6 +37,7 @@ function init() {
     manager.onLoad = function () {
     
         console.log( 'Loading complete!');
+        binaryClock.classList.add('hide');
         container.classList.remove('hide');
     
     };
@@ -79,10 +79,9 @@ function init() {
 
     // scene.add(mesh);
 
-    renderer = new THREE.WebGLRenderer( { alpha: true } );
+    renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor( 0x000000, 0 );
     container.appendChild(renderer.domElement);
 
     container.style.touchAction = 'none';
