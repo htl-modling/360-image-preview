@@ -6,10 +6,18 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="/assets/css/styles.css">
 	</head>
-	<body>
-        <div id="container"></div>
+	<body onload="binaryClock();">
         
+		<div class="onProgressContainer">
+		<table class="onProgress" id="binary-clock">
+			<tr><td class="res" id="hr"></td><td id="h32">&nbsp;</td><td id="h16">&nbsp;</td><td id="h8">&nbsp;</td><td id="h4">&nbsp;</td><td id="h2">&nbsp;</td><td id="h1">&nbsp;</td></tr>
+			<tr><td class="res" id="mr"></td><td id="m32">&nbsp;</td><td id="m16">&nbsp;</td><td id="m8">&nbsp;</td><td id="m4">&nbsp;</td><td id="m2">&nbsp;</td><td id="m1">&nbsp;</td></tr>
+			<tr><td class="res" id="sr"></td><td id="s32">&nbsp;</td><td id="s16">&nbsp;</td><td id="s8">&nbsp;</td><td id="s4">&nbsp;</td><td id="s2">&nbsp;</td><td id="s1">&nbsp;</td></tr>
+		</table>
+	</div>
+        <div class="container hide" id="container"></div>
         <script type="module" src="/assets/js/three.module.min.js"></script>
 		<script type="module" src="/assets/js/360.js"></script>
+		<script src="/assets/js/clock.js"></script>
 	</body>
 </html>
