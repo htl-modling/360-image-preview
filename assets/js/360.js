@@ -9,13 +9,14 @@ let isUserInteracting = false,
     phi = 0, theta = 0;
 
 const binaryClock = document.getElementById('onProgressContainer');
+const container = document.getElementById('container');
 
 init();
 animate();
 
 function init() {
 
-    const container = document.getElementById('container');
+    
 
     camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 1100);
 
@@ -30,6 +31,7 @@ function init() {
     manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
     
         console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+        binaryClock.classList.add('show');
     
     };
     
@@ -37,6 +39,8 @@ function init() {
     
         console.log( 'Loading complete!');
         binaryClock.classList.add('hide');
+        binaryClock.classList.remove('show');
+        
         container.classList.remove('hide');
     
     };
@@ -45,6 +49,7 @@ function init() {
     manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
     
         console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+        binaryClock.classList.add('show');
     
     };
     
