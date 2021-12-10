@@ -23,12 +23,86 @@ function init() {
     // invert the geometry on the x-axis so that all of the faces point inward
     geometry.scale(- 1, 1, 1);
 
-    const texture = new THREE.TextureLoader().load('/assets/images/panoramaMain.PNG');
-    const material = new THREE.MeshBasicMaterial({ map: texture });
+    // const loader = new THREE.TextureLoader();
 
-    const mesh = new THREE.Mesh(geometry, material);
+    // loader.load(
+    //     '/assets/images/panoramaMain.PNG',
 
-    scene.add(mesh);
+    //     function ( texture ) {
+    //         // in this example we create the material when the texture is loaded
+    //         const material = new THREE.MeshBasicMaterial({ map: texture });
+
+    //         const mesh = new THREE.Mesh(geometry, material);
+
+    //         scene.add(mesh);
+    //     },
+
+    //     function ( onProgress ) {
+
+    //         console.log('Object is loading...' + onProgress.total);
+    //         console.log( (onProgress.loaded / onProgress.total * 100) + '% loaded' );
+    
+    //     },
+    //     // called when loading has errors
+    //     function ( error ) {
+    
+    //         console.log( 'An error happened: ' + error );
+    
+    //     });
+
+    // const texture = new THREE.TextureLoader().load('/assets/images/panoramaMain.PNG');
+
+
+
+    const manager = new THREE.LoadingManager();
+    manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+    
+        console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+    
+    };
+    
+    manager.onLoad = function () {
+    
+        console.log( 'Loading complete!');
+    
+    };
+    
+    
+    manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+    
+        console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+    
+    };
+    
+    manager.onError = function ( url ) {
+    
+        console.log( 'There was an error loading ' + url );
+    
+    };
+    
+    const loader = new THREE.TextureLoader( manager );
+    loader.load( '/assets/images/panoramaMain.PNG', function ( texture ) {
+
+        const material = new THREE.MeshBasicMaterial({ map: texture });
+
+        const mesh = new THREE.Mesh(geometry, material);
+
+        scene.add(mesh);
+    
+    } );
+
+
+
+
+
+
+
+
+    // const material = new THREE.MeshBasicMaterial({ map: texture });
+
+    // const mesh = new THREE.Mesh(geometry, material);
+
+    // scene.add(mesh);
 
     renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio(window.devicePixelRatio);
