@@ -4,6 +4,8 @@
 	email: elias@eliascerne.com
 */
 
+binaryClock();
+
 function DecToBin(value)
 {			
 	var result = '';

@@ -11,17 +11,11 @@ let isUserInteracting = false,
 const binaryClock = document.getElementById('onProgressContainer');
 const container = document.getElementById('container');
 
-
-document.addEventListener("DOMContentLoaded", function (event) {
-    init();
-    animate();
-});
-
-
+init();
+// 
 
 function init() {
 
-    
 
     camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 1100);
 
@@ -69,6 +63,7 @@ function init() {
         const mesh = new THREE.Mesh(geometry, material);
 
         scene.add(mesh);
+        animate();
 
     });
 
