@@ -11,8 +11,13 @@ let isUserInteracting = false,
 const binaryClock = document.getElementById('onProgressContainer');
 const container = document.getElementById('container');
 
-init();
-animate();
+
+document.addEventListener("DOMContentLoaded", function (event) {
+    init();
+    animate();
+});
+
+
 
 function init() {
 
@@ -37,9 +42,9 @@ function init() {
     manager.onLoad = function () {
     
         console.log( 'Loading complete!');
-        // binaryClock.classList.add('hide');
+        binaryClock.classList.add('hide');
         
-        // container.classList.remove('hide');
+        container.classList.remove('hide');
     
     };
     
@@ -56,17 +61,18 @@ function init() {
     
     };
     
-    const loader = new THREE.TextureLoader( manager );
-    loader.load( './assets/images/panoramaMain.PNG', function ( texture ) {
+    const loader = new THREE.TextureLoader(manager);
+    loader.load('./assets/images/panoramaMain.PNG', function (texture) {
 
         const material = new THREE.MeshBasicMaterial({ map: texture });
 
         const mesh = new THREE.Mesh(geometry, material);
 
         scene.add(mesh);
-    
-    } );
 
+    });
+
+    
 
     renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio(window.devicePixelRatio);
