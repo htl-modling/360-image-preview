@@ -1,4 +1,4 @@
-import * as THREE from '/assets/js/three.module.min.js';
+import * as THREE from './assets/js/three.module.min.js';
 
 let camera, scene, renderer;
 
