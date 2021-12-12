@@ -10,7 +10,14 @@ let isUserInteracting = false,
 
 const onProgressContainer = document.getElementById('onProgressContainer');
 
-onProgressContainer.addEventListener('click', function () {
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   console.log('loaded');
+//   loadingImage();
+// });
+
+document.addEventListener("DOMContentLoaded", loadingImage);
+function loadingImage () {
     const manager = new THREE.LoadingManager();
     manager.onStart = function (url, itemsLoaded, itemsTotal) {
 
@@ -53,7 +60,8 @@ onProgressContainer.addEventListener('click', function () {
         scene.add(mesh);
 
     });
-});
+}
+
 
 init();
 animate();
