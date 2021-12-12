@@ -4,18 +4,9 @@
 	email: elias@eliascerne.com
 */
 
-import { loadingImage } from "./360.js";
 
-document.addEventListener("DOMContentLoaded", function() {
-    console.log('loaded');
-    
-    setTimeout(function() {
-        loadingImage();
-        
-      }, 1000);
-  });
 
-  binaryClock();
+
 
 function DecToBin(value)
 {			
@@ -28,6 +19,7 @@ function DecToBin(value)
 	return result;
 }
 
+binaryClock();
 function binaryClock()
 {
 	var current = new Date();
