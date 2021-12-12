@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadingImage();
 });
 
-export function loadingImage () {
+function loadingImage () {
     const manager = new THREE.LoadingManager();
     manager.onStart = function (url, itemsLoaded, itemsTotal) {
 
