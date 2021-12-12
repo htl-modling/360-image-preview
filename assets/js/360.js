@@ -16,11 +16,11 @@ const onProgressContainer = document.getElementById('onProgressContainer');
 //   loadingImage();
 // });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     console.log('loaded');
-    
+
     loadingImage();
-  });
+});
 
 export function loadingImage () {
     const manager = new THREE.LoadingManager();
