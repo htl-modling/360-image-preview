@@ -19,9 +19,7 @@ const onProgressContainer = document.getElementById('onProgressContainer');
 document.addEventListener("DOMContentLoaded", function() {
     console.log('loaded');
     
-    setTimeout(function() {
-        loadingImage();
-      }, 10);
+    loadingImage();
   });
 
 export function loadingImage () {
