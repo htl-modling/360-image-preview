@@ -16,8 +16,8 @@ const onProgressContainer = document.getElementById('onProgressContainer');
 //   loadingImage();
 // });
 
-document.addEventListener("DOMContentLoaded", loadingImage);
-function loadingImage () {
+
+export function loadingImage () {
     const manager = new THREE.LoadingManager();
     manager.onStart = function (url, itemsLoaded, itemsTotal) {
 
