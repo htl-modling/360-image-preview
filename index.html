@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="./assets/css/styles.css">
 	</head>
-	<body onload="">
+	<body onload="binaryClock();">
         
 		<div class="onProgressContainer" id="onProgressContainer">
 			<table class="onProgress" id="binary-clock">
@@ -15,10 +15,10 @@
 				<tr><td class="res" id="sr"></td><td id="s32">&nbsp;</td><td id="s16">&nbsp;</td><td id="s8">&nbsp;</td><td id="s4">&nbsp;</td><td id="s2">&nbsp;</td><td id="s1">&nbsp;</td></tr>
 			</table>
 		</div>
-        <div class="container hide" id="container"></div>
-
+        <div class="container" id="container"></div>
+		<script src="./assets/js/clock.js"></script>
         <script type="module" src="./assets/js/three.module.min.js"></script>
 		<script type="module" src="./assets/js/360.js"></script>
-		<script src="./assets/js/clock.js"></script>
+		
 	</body>
 </html>

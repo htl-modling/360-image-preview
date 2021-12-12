@@ -1,4 +1,4 @@
-import * as THREE from './three.module.min.js';
+import * as THREE from '/assets/js/three.module.min.js';
 
 let camera, scene, renderer;
 
@@ -8,66 +8,106 @@ let isUserInteracting = false,
     lat = -20, onPointerDownLat = 0,
     phi = 0, theta = 0;
 
-const binaryClock = document.getElementById('onProgressContainer');
-const container = document.getElementById('container');
+const onProgressContainer = document.getElementById('onProgressContainer');
 
-init();
-// 
-
-function init() {
-
-
-    camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 1100);
-
-    scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x152024);
-
-    const geometry = new THREE.SphereGeometry(500, 60, 40);
-    // invert the geometry on the x-axis so that all of the faces point inward
-    geometry.scale(- 1, 1, 1);
-
+onProgressContainer.addEventListener('click', function () {
     const manager = new THREE.LoadingManager();
-    manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
-    
-        console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-    
+    manager.onStart = function (url, itemsLoaded, itemsTotal) {
+
+        console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+
     };
-    
+
     manager.onLoad = function () {
-    
-        console.log( 'Loading complete!');
-        binaryClock.classList.add('hide');
-        
-        container.classList.remove('hide');
-    
+
+        console.log('Loading complete!');
+        onProgressContainer.classList.add('hide');
+
     };
-    
-    
-    manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
-    
-        console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-    
+
+
+    manager.onProgress = function (url, itemsLoaded, itemsTotal) {
+
+        console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+
     };
-    
-    manager.onError = function ( url ) {
-    
-        console.log( 'There was an error loading ' + url );
-    
+
+    manager.onError = function (url) {
+
+        console.log('There was an error loading ' + url);
+
     };
-    
+
     const loader = new THREE.TextureLoader(manager);
     loader.load('./assets/images/panoramaMain.PNG', function (texture) {
 
+        const geometry = new THREE.SphereGeometry(500, 60, 40);
+    // invert the geometry on the x-axis so that all of the faces point inward
+        geometry.scale(- 1, 1, 1);
+
+        // const texture = new THREE.TextureLoader().load('/assets/images/panoramaMain.PNG');
         const material = new THREE.MeshBasicMaterial({ map: texture });
 
         const mesh = new THREE.Mesh(geometry, material);
 
         scene.add(mesh);
-        animate();
 
     });
+});
 
-    
+init();
+animate();
+
+function init() {
+
+    const container = document.getElementById('container');
+
+    camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 1100);
+
+    scene = new THREE.Scene();
+
+    // const geometry = new THREE.SphereGeometry(500, 60, 40);
+    // // invert the geometry on the x-axis so that all of the faces point inward
+    // geometry.scale(- 1, 1, 1);
+
+
+    // const manager = new THREE.LoadingManager();
+    // manager.onStart = function (url, itemsLoaded, itemsTotal) {
+
+    //     console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+
+    // };
+
+    // manager.onLoad = function () {
+
+    //     console.log('Loading complete!');
+
+    // };
+
+
+    // manager.onProgress = function (url, itemsLoaded, itemsTotal) {
+
+    //     console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+
+    // };
+
+    // manager.onError = function (url) {
+
+    //     console.log('There was an error loading ' + url);
+
+    // };
+
+    // const loader = new THREE.TextureLoader(manager);
+    // loader.load('./assets/images/panoramaMain.PNG', function (texture) {
+
+    //     // const texture = new THREE.TextureLoader().load('/assets/images/panoramaMain.PNG');
+    //     const material = new THREE.MeshBasicMaterial({ map: texture });
+
+    //     const mesh = new THREE.Mesh(geometry, material);
+
+    //     scene.add(mesh);
+
+    // });
 
     renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -100,22 +140,22 @@ function init() {
 
     });
 
-    document.addEventListener('drop', function (event) {
+    // document.addEventListener('drop', function (event) {
 
-        event.preventDefault();
+    //     event.preventDefault();
 
-        const reader = new FileReader();
-        reader.addEventListener('load', function (event) {
+    //     const reader = new FileReader();
+    //     reader.addEventListener('load', function (event) {
 
-            material.map.image.src = event.target.result;
-            material.map.needsUpdate = true;
+    //         material.map.image.src = event.target.result;
+    //         material.map.needsUpdate = true;
 
-        });
-        reader.readAsDataURL(event.dataTransfer.files[0]);
+    //     });
+    //     reader.readAsDataURL(event.dataTransfer.files[0]);
 
-        document.body.style.opacity = 1;
+    //     document.body.style.opacity = 1;
 
-    });
+    // });
 
     //
 
