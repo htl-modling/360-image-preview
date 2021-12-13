@@ -56,6 +56,8 @@ function loadingImage () {
         const geometry = new THREE.SphereGeometry(500, 60, 40);
     // invert the geometry on the x-axis so that all of the faces point inward
         geometry.scale(- 1, 1, 1);
+        
+        texture.mapping = THREE.EquirectangularReflectionMapping;
 
         // const texture = new THREE.TextureLoader().load('/assets/images/panoramaMain.PNG');
         const material = new THREE.MeshBasicMaterial({ map: texture });
