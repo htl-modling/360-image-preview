@@ -57,10 +57,11 @@ function loadingImage () {
     // invert the geometry on the x-axis so that all of the faces point inward
         geometry.scale(- 1, 1, 1);
         
-        texture.mapping = THREE.EquirectangularReflectionMapping;
+        const texture2 = texture;
+        texture2.mapping = THREE.EquirectangularReflectionMapping;
 
         // const texture = new THREE.TextureLoader().load('/assets/images/panoramaMain.PNG');
-        const material = new THREE.MeshBasicMaterial({ map: texture });
+        const material = new THREE.MeshBasicMaterial({ map: texture2 });
 
         const mesh = new THREE.Mesh(geometry, material);
 
